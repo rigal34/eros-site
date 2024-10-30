@@ -1,0 +1,16 @@
+div#mesphotos{
+    display: flex;
+    width: 100%;
+}
+
+div#mesphotos img{/*je sélectionne les images de ma div*/
+    width: 25%;
+    box-shadow:none;
+    transition: all 0.3s ease;
+
+}                                   /*pour que ma transition se passe doucement je passe de rien à zoom( box-shadow:none;///// transform: scale(1.1); )*/
+
+div#mesphotos img:hover{
+    transform: scale(1.1);/*effet de zoom quand on le survole*/
+    box-shadow: var(--ombre);
+}
