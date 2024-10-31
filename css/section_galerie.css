@@ -6,7 +6,6 @@ div#mesphotos{
 
 div#mesphotos img{/*je sélectionne les images de ma div*/
     width: 25%;
-    border-radius: 10px!important ;
     box-shadow:none;
     transition: all 0.3s ease;
 
@@ -15,4 +14,40 @@ div#mesphotos img{/*je sélectionne les images de ma div*/
 div#mesphotos img:hover{
     transform: scale(1.1);/*effet de zoom quand on le survole*/
     box-shadow: var(--ombre);
+}
+
+
+
+
+div#mesphotos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+div#mesphotos img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px !important;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+div#mesphotos img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 750px) {
+    div#mesphotos img {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    div#mesphotos img {
+        width: 100%;
+    }
 }
