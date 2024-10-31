@@ -26,31 +26,30 @@ div#mesphotos {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px; 
+    gap: 20px; /* Espace entre les images */
     padding: 20px;
 }
 
 div#mesphotos img {
-    width: 200px; 
-    height: auto; 
-    border-radius: 10px!important ;
+    width: 200px; /* Taille par défaut des images */
+    height: auto;
+    border-radius: 10px !important;
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-div#mesphotos img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
-}
-
+/* Adaptation pour les écrans de taille moyenne */
 @media screen and (max-width: 750px) {
     div#mesphotos img {
-        width: 45%;
+        width: 45%; /* Les images occupent 45% de la largeur */
+        margin: 10px; /* Ajoute de l'espace autour de chaque image */
     }
 }
 
+/* Adaptation pour les petits écrans */
 @media screen and (max-width: 500px) {
     div#mesphotos img {
-        width: 100%;
+        width: 100%; /* Les images occupent toute la largeur */
+        margin: 5px 0; /* Moins d'espace pour garder une apparence fluide */
     }
 }
