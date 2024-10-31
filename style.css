@@ -33,7 +33,7 @@ div#mesphotos {
 div#mesphotos img {
     width: 200px; /* Ajuste la largeur selon le besoin */
     height: auto; /* Maintient le ratio */
-    border-radius: 10px;
+    border-radius: 10px!important ;
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
