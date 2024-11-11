@@ -9,7 +9,9 @@ $message = htmlspecialchars($_POST['message']);
 $to = "rigalrigal2014@outlook.fr";
 $subject = "Nouveau message de $prenom";
 $body = "Nom: $prenom\nEmail: $email\n\nMessage:\n$message";
-$headers = "From: $email";
+
+$headers = "From: no-reply@lesitedebruno.com\r\n";
+$headers .= "Reply-To: $email\r\n";
 
 
 if (mail($to, $subject, $body, $headers)) {
