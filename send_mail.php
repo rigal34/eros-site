@@ -8,7 +8,13 @@ $message = htmlspecialchars($_POST['message']);
 
 $to = "rigalrigal2014@outlook.fr";
 $subject = "Nouveau message de $prenom depuis le site Eros";
-$body = "Nom: $prenom\nEmail: $email\n\nMessage:\n$message";
+
+$body = "Nom: $prenom\n";
+$body = "Email de l'expéditeur: $email\n\n";
+$body = "Message:\n$message";
+
+
+
 
 $headers = "From: no-reply@lesitedebruno.com\r\n";
 $headers .= "Reply-To: $email\r\n";
