@@ -18,6 +18,12 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
     $email = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
 
+    if (!$email) {
+        echo "Adresse e-mail invalide.";
+        exit;
+    }
+
+
     $mail = new PHPMailer(true);
 
     try {
@@ -30,7 +36,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         $mail->Port = 587;
 
         $mail->setFrom('rigalbruno30@gmail.com', 'EROS LE SITE');
-        $mail->addAddress('TON_EMAIL_GMAIL@gmail.com'); // L'adresse de réception (la tienne)
+        $mail->addAddress('rigalbruno30@gmail.com'); // L'adresse de réception (la tienne)
         $mail->addReplyTo($email, $prenom); // Adresse pour répondre à l'expéditeur
 
         $mail->isHTML(false); // Envoi en texte brut
