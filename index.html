@@ -60,18 +60,17 @@
       <h2>Me contacter</h2>
       <p>Envie de travailler avec moi ? Discutons-en autour d'un bon bol de croquettes ! <br />Pour me joindre :</p>
 
-      <form action="send_mail.php" method="post">
-        <label for="prenom">Votre prénom</label>
-       <input type="text" id="prenom" placeholder="Prénom" required />
-
-        <label for="email">Votre email</label>
-        <input type="email" id="email" placeholder="exemple@exemple.com" required />
-        
-        <label for="message">Votre message</label>
-        <textarea name="message" id="message" required placeholder="Votre message ..."></textarea>
-
-        <button class="btnRose" type="submit">Envoyer</button>
-      </form>
+      <form action="http://localhost:8000/send_mail.php" method="POST">
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
+    
+    
     </section>
 <!-- Forcer le déploiement -->
     <footer>
