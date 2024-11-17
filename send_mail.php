@@ -1,21 +1,15 @@
 <?php
-
-
-
-
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\SMTP; 
 
+require 'vendor/autoload.php';
 
-require 'vendor/phpmailer/phpmailer/src/Exception.php';
-require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require 'vendor/phpmailer/phpmailer/src/SMTP.php';
-
+// Vérification de la méthode de requête pour s'assurer que le formulaire a été soumis en POST
 if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // Récupère les données du formulaire
     $prenom = htmlspecialchars($_POST['prenom']);
-    $email = htmlspecialchars($_POST['email']);
+    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     $message = htmlspecialchars($_POST['message']);
 
     if (!$email) {
@@ -23,33 +17,42 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         exit;
     }
 
-
     $mail = new PHPMailer(true);
 
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
+        $mail->Host = 'smtp.hostinger.com'; // Serveur SMTP
         $mail->SMTPAuth = true;
-        $mail->Username = 'rigalbruno30@gmail.com'; // Remplace par ton adresse Gmail
-        $mail->Password = '9326yez1334'; // Remplace par le mot de passe d'application
+        $mail->Username = 'contact@lesitedebruno.com'; // Ton adresse e-mail
+        $mail->Password = '9326@Aa1'; // Ton mot de passe e-mail
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail->setFrom('rigalbruno30@gmail.com', 'EROS LE SITE');
-        $mail->addAddress('rigalbruno30@gmail.com'); // L'adresse de réception (la tienne)
-        $mail->addReplyTo($email, $prenom); // Adresse pour répondre à l'expéditeur
+        // Configuration de l’e-mail
+        $mail->setFrom('contact@lesitedebruno.com', 'Le Site de Bruno');
+        $mail->addAddress('contact@lesitedebruno.com');
+        $mail->addReplyTo($email, $prenom);
 
-        $mail->isHTML(false); // Envoi en texte brut
+        $mail->isHTML(false);
         $mail->Subject = "Nouveau message de $prenom";
-        $mail->Body = "Nom: $prenom\nEmail de l'expéditeur: $email\n\nMessage:\n$message";
+        $mail->Body = "Nom: $prenom\nEmail: $email\n\nMessage:\n$message";
 
+        // Envoi de l’e-mail
         $mail->send();
         echo "Votre message a été envoyé avec succès.";
     } catch (Exception $e) {
-        echo "Erreur lors de l'envoi du message : ", $mail->ErrorInfo;
+        echo "Erreur lors de l'envoi du message : " . $mail->ErrorInfo;
     }
+} else {
+    echo "Aucune soumission de formulaire détectée.";
 }
 ?>
+
+
+
+
+
+
 
 
 
